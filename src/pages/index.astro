@@ -1,17 +1,374 @@
 ---
+const profile = {
+  name: "Gabriel Dinu",
+  headline: "L2 Support Engineer Team Lead · Linux · ITIL",
+  blurb:
+    "Twelve years building and supporting retail systems at scale — from L1 helpdesk to leading the L2 team behind Delhaize Romania's POS, self-checkout, and backend infrastructure. ITIL certified, Linux-focused, and increasingly drawn to the automation side: infrastructure that can be torn down and rebuilt from a git repository.",
+  email: "gabridinu@gmail.com",
+  phone: "+40 720 135 896",
+  location: "Bucharest, Romania",
+  github: "https://github.com/gabridinu",
+  linkedin: "https://www.linkedin.com/in/gabridinu",
+};
 
+const projects = [
+  {
+    name: "Self-Hosted Kubernetes Homelab",
+    blurb:
+      "A bare-metal k3s cluster managed entirely through GitOps. This page is served from it.",
+    detail:
+      "Every workload is declared in git and reconciled by Argo CD using the App-of-Apps pattern, so manual changes self-heal back to the committed state. TLS certificates are issued automatically by cert-manager through Let's Encrypt DNS-01 challenges, requiring no inbound port for validation. Credentials are encrypted with Sealed Secrets so they live safely in version control. Debugging spans the full stack — I traced a broken public HTTPS path from ISP CGNAT checks through router NAT rules down to a duplicate containerPort conflict in a Traefik Helm override.",
+    tech: ["k3s", "Argo CD", "Traefik", "cert-manager", "Sealed Secrets", "Prometheus", "Cloudflare"],
+    link: "https://github.com/gabridinu/homelab",
+    linkLabel: "View repository",
+  },
+  {
+    name: "Retail Rollout Automation",
+    blurb:
+      "Scripted deployment and rollback procedures for POS and self-checkout estates.",
+    detail:
+      "Built and maintained custom scripts for rolling out software across a national retail footprint, with tested rollback paths to prevent prolonged downtime during production changes. Reduced manual effort and made deployments repeatable across sites.",
+    tech: ["Bash", "Linux", "Windows Server", "POS", "SCO"],
+    link: "https://www.linkedin.com/in/gabridinu",
+    linkLabel: "More on LinkedIn",
+  },
+];
+
+const experience = [
+  {
+    role: "L2 Software Support Engineer — Team Lead",
+    company: "Romanian Business Consult",
+    period: "Dec 2019 — Present",
+    points: [
+      "Lead the team implementing and supporting retail solutions for Delhaize Romania",
+      "Own root cause analysis and all customer-facing communication for assigned accounts",
+      "Manage deployments of self-checkout (SCO), POS, backend monitoring, and peripherals",
+      "Write and maintain rollout/rollback scripts, minimising downtime during production changes",
+      "Review and validate FSDs, Change Requests, and BRDs through Jira",
+      "Provide 24/7 on-call emergency support while maintaining client SLAs",
+      "Liaise with vendors including Diebold Nixdorf and NCR to resolve escalations",
+    ],
+  },
+  {
+    role: "System Support Engineer — Level 2",
+    company: "Romanian Business Consult",
+    period: "May 2015 — Dec 2019",
+    points: [
+      "Implemented software solutions across varied retail environments",
+      "Advised clients on rollout strategy to meet objectives without affecting production",
+      "Escalated L3 issues to vendors; authored documentation for the L1 helpdesk",
+      "Delivered end-user training on application usage",
+    ],
+  },
+  {
+    role: "IT Technical Support — Level 1",
+    company: "Romanian Business Consult",
+    period: "May 2014 — May 2015",
+    points: [
+      "Diagnosed and resolved hardware and software faults",
+      "Owned issues end-to-end while managing customer expectations",
+    ],
+  },
+  {
+    role: "Back Office Administrator",
+    company: "BCR",
+    period: "Mar 2013 — May 2014",
+    points: [
+      "Processed corporate and retail account requests through dedicated banking applications",
+      "Verified authorised representative rights against submitted legal documentation",
+      "Oversaw and tested the rollout of a new internal software application",
+    ],
+  },
+];
+
+const skills = [
+  { group: "Kubernetes & GitOps", items: ["k3s", "Argo CD", "Helm", "App-of-Apps", "kubectl"] },
+  { group: "Automation & Scripting", items: ["Bash", "Python", "cloud-init", "Git", "Rollback design"] },
+  { group: "Systems", items: ["Linux", "Windows Server", "Docker", "systemd", "WSUS"] },
+  { group: "Networking & Security", items: ["Traefik", "cert-manager", "TLS", "DNS", "Cloudflare", "iptables"] },
+  { group: "Retail Systems", items: ["POS", "Self-Checkout", "Diebold Nixdorf", "NCR", "Fiscal homologation"] },
+  { group: "Service Management", items: ["ITIL", "Jira", "MS CRM", "ServiceNow", "SAP", "SQL Server"] },
+];
+
+const education = [
+  { what: "BSc International Economic Relations", where: "Dimitrie Cantemir University", period: "2009 — 2012" },
+];
+
+const certifications = [
+  "ITIL Foundation",
+  "Complete Python Bootcamp: Zero to Hero",
+];
+
+const languages = ["Romanian (native)", "English"];
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{profile.name} — {profile.headline}</title>
+    <meta name="description" content={profile.blurb} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <a class="brand" href="#top">{profile.name}</a>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#work">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="/cv.pdf">Get my CV</a>
+      </div>
+    </nav>
+
+    <header id="top">
+      <p class="eyebrow">{profile.headline}</p>
+      <h1>{profile.name}</h1>
+      <p class="blurb">{profile.blurb}</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Let's talk</a>
+        <a class="btn ghost" href={profile.github}>GitHub</a>
+        <a class="btn ghost" href={profile.linkedin}>LinkedIn</a>
+      </div>
+    </header>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="lede">Things I've built, and what I learned building them.</p>
+      <div class="grid">
+        {projects.map((p) => (
+          <article class="card">
+            <h3>{p.name}</h3>
+            <p class="strong">{p.blurb}</p>
+            <p>{p.detail}</p>
+            <ul class="tech">
+              {p.tech.map((t) => <li>{t}</li>)}
+            </ul>
+            <a class="link" href={p.link}>{p.linkLabel} →</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>Experience</h2>
+      <p class="lede">Twelve years in production support and implementation.</p>
+      {experience.map((job) => (
+        <article class="job">
+          <div class="meta">
+            <h3>{job.role}</h3>
+            <p>{job.company}</p>
+            <p class="period">{job.period}</p>
+          </div>
+          <ul>
+            {job.points.map((point) => <li>{point}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="lede">Tools and practices I work with day to day.</p>
+      <div class="grid">
+        {skills.map((s) => (
+          <div class="card small">
+            <h3>{s.group}</h3>
+            <ul class="tech">
+              {s.items.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>Education & Certifications</h2>
+      <div class="grid">
+        {education.map((e) => (
+          <div class="card small">
+            <h3>{e.what}</h3>
+            <p>{e.where} · {e.period}</p>
+          </div>
+        ))}
+        <div class="card small">
+          <h3>Certifications</h3>
+          <ul class="tech">
+            {certifications.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+        <div class="card small">
+          <h3>Languages</h3>
+          <ul class="tech">
+            {languages.map((l) => <li>{l}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <h2>Let's get in touch</h2>
+      <p class="lede">
+        Open to new opportunities and conversations — particularly in platform,
+        infrastructure, or DevOps engineering.
+      </p>
+      <div class="cta">
+        <a class="btn" href={`mailto:${profile.email}`}>Mail me</a>
+        <a class="btn ghost" href={profile.linkedin}>LinkedIn</a>
+        <a class="btn ghost" href={profile.github}>GitHub</a>
+        <a class="btn ghost" href="/cv.pdf">Get my CV</a>
+      </div>
+      <p class="copy">
+        {profile.location} · © {new Date().getFullYear()} {profile.name}
+      </p>
+    </footer>
+
+    <style is:global>
+      :root {
+        --bg: #0d1117;
+        --surface: #151b23;
+        --border: #232b36;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --accent: #58d3a8;
+        --max: 1000px;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, system-ui, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+
+      nav {
+        position: sticky; top: 0; z-index: 10;
+        display: flex; justify-content: space-between; align-items: center;
+        gap: 1rem; padding: 1rem 1.5rem;
+        background: rgba(13, 17, 23, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      .brand { font-weight: 700; }
+      .links { display: flex; gap: 1.25rem; align-items: center; font-size: 0.9rem; }
+      .links a:not(.btn):hover { color: var(--accent); }
+
+      .btn {
+        display: inline-block;
+        padding: 0.55rem 1.1rem;
+        border-radius: 6px;
+        background: var(--accent);
+        color: #06231a;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: opacity 0.15s;
+      }
+      .btn:hover { opacity: 0.85; }
+      .btn.ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+      .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+      header {
+        max-width: var(--max); margin: 0 auto;
+        padding: 6rem 1.5rem 5rem;
+      }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        color: var(--accent);
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+      }
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+      }
+      .blurb { color: var(--muted); font-size: 1.15rem; max-width: 62ch; }
+      .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+      section, footer {
+        max-width: var(--max); margin: 0 auto;
+        padding: 4rem 1.5rem;
+      }
+      h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+      .lede { color: var(--muted); margin-bottom: 2.5rem; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.75rem;
+        transition: border-color 0.2s;
+      }
+      .card:hover { border-color: var(--accent); }
+      .card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+      .card p { color: var(--muted); margin-bottom: 1rem; }
+      .card .strong { color: var(--text); }
+      .card.small h3 { font-size: 1.05rem; }
+      .card.small p { margin: 0; font-size: 0.95rem; }
+      .card.small .tech { margin-bottom: 0; }
+
+      .tech { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+      .tech li {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        color: var(--muted);
+      }
+      .link { color: var(--accent); font-size: 0.9rem; font-weight: 500; }
+      .link:hover { text-decoration: underline; }
+
+      .job {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border);
+      }
+      .job h3 { font-size: 1.15rem; }
+      .job .meta p { color: var(--muted); font-size: 0.95rem; }
+      .job .period { font-family: "JetBrains Mono", monospace; font-size: 0.8rem; }
+      .job ul { list-style: none; }
+      .job li { color: var(--muted); padding-left: 1.25rem; position: relative; margin-bottom: 0.5rem; }
+      .job li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+
+      footer { border-top: 1px solid var(--border); text-align: center; }
+      footer .lede { max-width: 52ch; margin-inline: auto; }
+      footer .cta { justify-content: center; }
+      .copy { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
+
+      @media (max-width: 700px) {
+        .links a:not(.btn) { display: none; }
+        .job { grid-template-columns: 1fr; gap: 1rem; }
+        header { padding: 4rem 1.5rem 3rem; }
+      }
+    </style>
+  </body>
 </html>
