@@ -35,9 +35,9 @@ const projects = [
   {
   name: "Self-Hosted LLM Inference",
   blurb:
-    "Ollama running on Proxmox, integrated with an OpenClaw agent for automated workflows.",
+    "Ollama running on Proxmox, integrated with an Hermes Agent for automated workflows.",
   detail:
-    "Runs in a [LXC container / VM] on Proxmox serving [which models] via Ollama's HTTP API, keeping inference entirely local rather than routing data to third-party providers. An OpenClaw agent sits on top, [what it does — what tasks does it automate, what does it have access to?]. [What was hard about the integration.]",
+    "Runs in a Proxmox VM using Ollama to provide local inference with Gemma 4 and Qwen 3 through its HTTP API, keeping data entirely within the local environment. An Hermes agent adds automation and system interaction capabilities. This setup significantly improved my development and troubleshooting workflow and was also integrated with VS Code, providing a free, open-source AI coding assistant. For more complex tasks, it can also rely on third-party AI solutions when required.",
   tech: ["Proxmox", "Ollama", "OpenClaw", "Linux"],
   link: "https://github.com/gabridinu",
   linkLabel: "More on GitHub",
